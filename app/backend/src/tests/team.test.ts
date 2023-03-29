@@ -1,45 +1,28 @@
-import * as sinon from 'sinon';
+import * as Sinon from 'sinon';
 import * as chai from 'chai';
 // @ts-ignore
 import chaiHttp = require('chai-http');
-
-import { app } from '../app';
-import Example from '../database/models/ExampleModel';
-
 import { Response } from 'superagent';
-
 chai.use(chaiHttp);
-
 const { expect } = chai;
-
-describe('Seu teste', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
-
-  // let chaiHttpResponse: Response;
-
-  // before(async () => {
-  //   sinon
-  //     .stub(Example, "findOne")
-  //     .resolves({
-  //       ...<Seu mock>
-  //     } as Example);
-  // });
-
-  // after(()=>{
-  //   (Example.findOne as sinon.SinonStub).restore();
-  // })
-
-  // it('...', async () => {
-  //   chaiHttpResponse = await chai
-  //      .request(app)
-  //      ...
-
-  //   expect(...)
-  // });
-
-  it('Seu sub-teste', () => {
-    expect(false).to.be.eq(true);
+import { app } from '../app';
+import {teamsMock, team} from './mocks/team.mock';
+import Teams from '../database/models/TeamModel';
+chai.use(chaiHttp);
+  
+describe('Tests for team route', () => {
+  it('The /teams endpoint returns all teams correctly', async () => {
+      Sinon.stub(Teams, 'findAll').resolves(teamsMock as Teams[]);
+      let chaiHttpResponse: Response;
+      chaiHttpResponse = await chai.request(app).get('/teams');
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.body).to.be.deep.equal(teamsMock);
+  });
+  it('The /teams/:id endpoint return data for a specific team', async () => {
+      Sinon.stub(Teams, 'findByPk').resolves(team as Teams);
+      let chaiHttpResponse: Response;
+      chaiHttpResponse = await chai.request(app).get('/teams/8');
+      expect(chaiHttpResponse.status).to.be.equal(200);
+      expect(chaiHttpResponse.body).to.be.deep.equal(team);
   });
 });
