@@ -6,7 +6,7 @@ const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const user = await UserService.loginUser(email, password);
   if (!user) {
-    return res.status(400).json({ message: 'All must be filled' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
   if (user) {
     const token = createToken(user);
