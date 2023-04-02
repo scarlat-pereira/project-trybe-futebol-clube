@@ -9,6 +9,7 @@ const matchesController = new MatchesController(matchesService);
 
 const matchesRoutes = express.Router();
 
-matchesRoutes.get('/', matchesController.getAll);
+// matchesRoutes.get('/?', matchesController.getInProgress);
+matchesRoutes.get('/', matchesController.getAllMatches);
 
 export default matchesRoutes;
