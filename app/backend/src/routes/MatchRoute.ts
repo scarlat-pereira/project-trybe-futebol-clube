@@ -12,5 +12,6 @@ const matchesRoutes = express.Router();
 
 matchesRoutes.get('/', matchesController.getAllMatches);
 matchesRoutes.patch('/:id/finish', validateToken, matchesController.getById);
+matchesRoutes.patch('/:id', validateToken, matchesController.updateMatch);
 
 export default matchesRoutes;
