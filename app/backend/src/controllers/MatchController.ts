@@ -32,8 +32,28 @@ export default class MatchesController {
   updateMatch = async (req: Request, res: Response) => {
     const { homeTeamGoals, awayTeamGoals } = req.body;
     const { id } = req.params;
-    const match = await this
-      ._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
-    return res.status(200).json(match);
+    // const match = await this
+    //   ._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
+    // return res.status(200).json(match);
+    await this._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
+    return res.status(200).json({ message: 'ok' });
+  };
+
+  createMatches = async (req: Request, res: Response) => {
+    // const { body } = req;
+    // const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = body;
+    // const match = await this._service
+    //   .createMatches(
+    //     homeTeamId as number,
+    //     awayTeamId as number,
+    //     homeTeamGoals as number,
+    //     awayTeamGoals as number,
+    //   );
+    // if (match === false) {
+    //   return res.status(404).json({ message: 'There is no team with such id!' });
+    // }
+    const newMatch = req.body;
+    const match = await this._service.createMatches(newMatch);
+    return res.status(201).json(match);
   };
 }
