@@ -2,7 +2,7 @@ import Stats from '../../interfaces/stats';
 import Matches from './MatchModel';
 import Teams from './TeamModel';
 
-export default class TeamStats implements Stats {
+export default class AwayStats implements Stats {
   name: string;
   totalPoints: number;
   totalGames: number;
@@ -78,7 +78,7 @@ export default class TeamStats implements Stats {
     let value = 0;
     this.matches.forEach((e) => {
       if (this.team.id === e.awayTeamId && e.inProgress === false) {
-        value += e.homeTeamGoals;
+        value += e.awayTeamGoals;
       }
     });
     return value;
@@ -88,7 +88,7 @@ export default class TeamStats implements Stats {
     let value = 0;
     this.matches.forEach((e) => {
       if (this.team.id === e.awayTeamId && e.inProgress === false) {
-        value += e.awayTeamGoals;
+        value += e.homeTeamGoals;
       }
     });
     return value;

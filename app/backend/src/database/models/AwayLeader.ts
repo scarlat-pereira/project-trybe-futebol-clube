@@ -1,7 +1,7 @@
 import Stats from '../../interfaces/stats';
+import AwayStats from './AwayStats';
 import Matches from './MatchModel';
 import Teams from './TeamModel';
-import TeamStats from './TeamStats';
 
 export default class AwayLeader {
   private _teams: Teams[];
@@ -20,7 +20,7 @@ export default class AwayLeader {
   public createBoard() {
     return this._teams
       .map((match) => {
-        const stats = new TeamStats(match, this._matches);
+        const stats = new AwayStats(match, this._matches);
         const { matches, team, ...rest } = stats;
         return rest;
       });

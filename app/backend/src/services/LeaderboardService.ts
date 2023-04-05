@@ -44,6 +44,22 @@ export default class LeaderboardService {
     const leaderboardHomeTeams = await this.teamModel.findAll();
     const leaderboardHomeMatches = await this.matchModel.findAll();
     const newBoard = new AwayLeader(leaderboardHomeTeams, leaderboardHomeMatches);
-    return newBoard.createBoard();
+    const result = newBoard.createBoard();
+    const sortedaway = result.sort((a, b) => {
+      if (a.totalPoints < b.totalPoints) { return 1; }
+      if (a.totalPoints > b.totalPoints) { return -1; }
+
+      if (a.totalVictories < b.totalVictories) { return 1; }
+      if (a.totalVictories > b.totalVictories) { return -1; }
+
+      if (a.goalsBalance > b.goalsBalance) { return -1; }
+      if (a.goalsBalance < b.goalsBalance) { return 1; }
+
+      if (a.goalsFavor < b.goalsFavor) { return 1; }
+      if (a.goalsFavor > b.goalsFavor) { return -1; }
+
+      return 0;
+    });
+    return sortedaway;
   };
 }
