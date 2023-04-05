@@ -4,8 +4,8 @@ import Teams from './TeamModel';
 
 export default class TeamStats implements Stats {
   name: string;
-  totalGames: number;
   totalPoints: number;
+  totalGames: number;
   totalVictories: number;
   totalDraws: number;
   totalLosses: number;
@@ -45,8 +45,7 @@ export default class TeamStats implements Stats {
     let value = 0;
     this.matches.forEach((match) => {
       if (match.inProgress === false
-        && this.team.id === match.homeTeamId
-        && match.awayTeamGoals) {
+        && this.team.id === match.homeTeamId && match.homeTeamGoals > match.awayTeamGoals) {
         value += 1;
       }
     });
@@ -56,7 +55,8 @@ export default class TeamStats implements Stats {
   getTotalLosses() {
     let value = 0;
     this.matches.forEach((match) => {
-      if (match.inProgress === false && this.team.id === match.homeTeamId) {
+      if (match.homeTeamGoals < match.awayTeamGoals
+       && match.inProgress === false && this.team.id === match.homeTeamId) {
         value += 1;
       }
     });

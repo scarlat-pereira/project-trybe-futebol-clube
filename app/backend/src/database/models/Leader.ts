@@ -19,10 +19,10 @@ export default class LeaderBoard {
 
   public createBoard() {
     return this._teams
-      .map((curTeam) => {
-        const teamStatistics = new TeamStats(curTeam, this._matches);
-        const { matches, team, efficiency, goalsBalance, ...statistic } = teamStatistics;
-        return statistic;
+      .map((match) => {
+        const stats = new TeamStats(match, this._matches);
+        const { matches, team, ...rest } = stats;
+        return rest;
       });
   }
 }
