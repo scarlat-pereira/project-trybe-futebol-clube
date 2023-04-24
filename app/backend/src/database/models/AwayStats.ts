@@ -12,7 +12,7 @@ export default class AwayStats implements Stats {
   goalsFavor: number;
   goalsOwn: number;
   goalsBalance: number;
-  efficiency:number;
+  efficiency: number;
   team: Teams;
   matches: Matches[];
 
@@ -28,7 +28,7 @@ export default class AwayStats implements Stats {
     this.goalsFavor = this.getgoalsFavor();
     this.goalsOwn = this.getgoalsOwn();
     this.goalsBalance = this.goalsFavor - this.goalsOwn;
-    this.efficiency = (this.totalPoints / (this.totalGames * 3)) * 100;
+    this.efficiency = Number(((this.totalPoints / (this.totalGames * 3)) * 100).toFixed(2));
   }
 
   getTotalGames() {
