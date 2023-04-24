@@ -30,7 +30,7 @@ Matches Page            |  Matches Page
 
 Leaderboard Page        
 :-------------------------:|
-![classificacao-page](https://user-images.githubusercontent.com/108958216/231841240-30cf6914-1cae-4fbf-a0d7-ea76fde13512.png)
+![Captura de tela de 2023-04-24 16-51-35](https://user-images.githubusercontent.com/108958216/234101371-02668314-c7a9-46d5-a3ad-01a81e7280a2.png)
 
 
 ---
