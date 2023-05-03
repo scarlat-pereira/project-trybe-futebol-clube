@@ -78,6 +78,18 @@ Leaderboard Page
 
   - **:warning: Atenção:** Não rode o comando npm audit fix! Ele atualiza várias dependências do projeto, e essa atualização gera conflitos com o avaliador.
 
+## Habilidades Desenvolvidas
+
+Neste projeto, desenvolvi as seguintes habilidades:
+
+ - Realizar a dockerização dos apps, network, volume e compose;
+ - Modelar dados com MySQL através do Sequelize;
+ - Criar e associar tabelas usando models do sequelize;
+ - Construir uma API REST com endpoints para consumir os models criados;
+ - Construir um CRUD com TypeScript, utilizando ORM;
+ - Validar e autenticar as requisições do usuário, utilizando middlewares de manipulação de erros e JWT;
+ - Aplicar a metodolodia TDD (Test Driven Development), utilizando Mocha, Chai e Sinon.
+
  ## Escopo do Projeto
  
  # Fluxo 1: Teams (Times)
