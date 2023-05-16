@@ -6,7 +6,7 @@ O TFC é um site informativo sobre partidas e classificações de futebol!
 
 Nesse projeto, desenvolvi um back-end dockerizado utilizando modelagem de dados através do Sequelize. 
 
-O desenvolvimento respeitou as regras de negócio providas no projeto e a API contruída foi capaz de consumir um front-end estruturado anteriormente.
+O desenvolvimento respeitou as regras de negócio providas no projeto e a API construída foi capaz de consumir um front-end estruturado anteriormente.
 
 Para adicionar uma partida é necessário ter um token, portanto a pessoa deverá estar logada para fazer as alterações. 
 
